@@ -10,9 +10,7 @@
 [![contributors][contributors-badge]][contributors]
 [![discord][discord-badge]][discord]
 
-_Starter for `node` libraries._
-
-// TODO: write intro section.
+_[Rehype][rehype] plugin to wrap images in links._
 
 ## 📦 Installation
 
@@ -24,11 +22,51 @@ npm install @bradgarropy/rehype-image-links
 
 ## 🥑 Usage
 
-// TODO: Write usage section.
+This is a [rehype][rehype] plugin for use in a [unified][unified] chain that modifies HTML syntax trees. It wraps all `img` tags in `a` tags with a link to their original source.
+
+```typescript
+import rehypeParse from "rehype-parse"
+import rehypeStringify from "rehype-stringify"
+import {unified} from "unified"
+
+const processor = unified()
+    .use(rehypeParse, {fragment: true})
+    .use(rehypeImageLinks)
+    .use(rehypeStringify)
+
+const html = await processor.process(
+    '<img src="https://example.com/photo.jpg" alt="alt text">',
+)
+
+console.log(file)
+
+// output
+// <a href="https://example.com/photo.jpg">
+//     <img src="https://example.com/photo.jpg" alt="alt text" />
+// </a>
+```
 
 ## 📖 API Reference
 
-// TODO: Write api reference section.
+### `use(rehypeImageLinks, options)`
+
+The `options` object is optional. Here are all the available options.
+
+| Name      | Required | Default |       Example       | Description                            |
+| :-------- | :------: | :-----: | :-----------------: | :------------------------------------- |
+| `classes` | `false`  |  `[]`   | `["link", "fancy"]` | List of classes to add to the `a` tag. |
+
+If you provide the `classes` option, those classes will be combined into a string and added to the `a` tag. For example, if you provided `{classes: ["link", "fancy"]}` for the options, the result will look like this.
+
+```html
+<!-- input -->
+<img src="https://example.com/photo.jpg" alt="alt text" />
+
+<!-- output -->
+<a href="https://example.com/photo.jpg" class="link fancy">
+    <img src="https://example.com/photo.jpg" alt="alt text" />
+</a>
+```
 
 ## ❔ Questions
 
@@ -72,3 +110,5 @@ npm install @bradgarropy/rehype-image-links
 [typescript-badge]: https://img.shields.io/npm/types/@bradgarropy/rehype-image-links?style=flat-square
 [discord]: https://bradgarropy.com/discord
 [discord-badge]: https://img.shields.io/discord/748196643140010015?style=flat-square
+[rehype]: https://github.com/rehypejs/rehype
+[unified]: https://github.com/unifiedjs/unified
