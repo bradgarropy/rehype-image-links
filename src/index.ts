@@ -1,5 +1,5 @@
 export type {
     RehypeImageLinks,
     RehypeImageLinksOptions,
-} from "./rehypeImageLinks"
-export {rehypeImageLinks} from "./rehypeImageLinks"
+} from "./rehypeImageLinks.js"
+export {rehypeImageLinks} from "./rehypeImageLinks.js"
