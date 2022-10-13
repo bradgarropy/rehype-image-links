@@ -1,0 +1,11 @@
+{
+    "type": "module",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "rehype-parse": "^8.0.4",
+        "rehype-stringify": "^9.0.3",
+        "unified": "^10.1.2"
+    }
+}
