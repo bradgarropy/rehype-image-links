@@ -1,5 +1,7 @@
-import {Element, isElement} from "hast-util-is-element"
-import {CONTINUE, EXIT, Node, SKIP, visit} from "unist-util-visit"
+import type {Element} from "hast"
+import {isElement} from "hast-util-is-element"
+import type {Node} from "unist"
+import {CONTINUE, EXIT, SKIP, visit} from "unist-util-visit"
 
 type RehypeImageLinksOptions = {
     classes?: string[]
