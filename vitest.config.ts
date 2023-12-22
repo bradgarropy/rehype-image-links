@@ -5,8 +5,9 @@ const config = defineConfig({
     plugins: [tsconfigPaths()],
     test: {
         coverage: {
-            provider: "istanbul",
-            reporter: ["text"],
+            all: false,
+            provider: "v8",
+            reporter: ["text", "lcov"],
         },
         environment: "node",
         passWithNoTests: true,
