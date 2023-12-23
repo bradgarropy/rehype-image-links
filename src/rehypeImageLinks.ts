@@ -5,11 +5,17 @@ import {CONTINUE, EXIT, SKIP, visit} from "unist-util-visit"
 
 type RehypeImageLinksOptions = {
     classes?: string[]
+    srcTransform?: (url: string) => string
+    hrefTransform?: (url: string) => string
 }
 
 type RehypeImageLinks = (options?: RehypeImageLinksOptions) => void
 
-const rehypeImageLinks: RehypeImageLinks = ({classes = []} = {}) => {
+const rehypeImageLinks: RehypeImageLinks = ({
+    classes = [],
+    srcTransform = (url: string) => url,
+    hrefTransform = (url: string) => url,
+} = {}) => {
     const visitor = (node: Element) => {
         if (isElement(node, "img")) {
             if (!node.properties?.src) {
@@ -17,13 +23,16 @@ const rehypeImageLinks: RehypeImageLinks = ({classes = []} = {}) => {
                 return EXIT
             }
 
+            const imgNode = structuredClone(node)
+            imgNode.properties.src = srcTransform(String(node.properties?.src))
+
             const linkNode: Element = {
                 type: "element",
                 tagName: "a",
                 properties: {
-                    href: node.properties?.src,
+                    href: hrefTransform(String(node.properties?.src)),
                 },
-                children: [{...node}],
+                children: [imgNode],
             }
 
             if (classes.length > 0 && linkNode.properties) {
