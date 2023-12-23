@@ -2,7 +2,7 @@ import rehypeParse from "rehype-parse"
 import rehypeStringify from "rehype-stringify"
 import {unified} from "unified"
 
-import {rehypeImageLinks} from "../dist/index.js"
+import {rehypeImageLinks} from "../dist/src/index.js"
 
 const processor = unified()
     .use(rehypeParse, {fragment: true})
