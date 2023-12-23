@@ -52,9 +52,11 @@ console.log(file)
 
 The `options` object is optional. Here are all the available options.
 
-| Name      | Required | Default |       Example       | Description                            |
-| :-------- | :------: | :-----: | :-----------------: | :------------------------------------- |
-| `classes` | `false`  |  `[]`   | `["link", "fancy"]` | List of classes to add to the `a` tag. |
+| Name            | Required |        Default         |               Example                | Description                                                  |
+| :-------------- | :------: | :--------------------: | :----------------------------------: | :----------------------------------------------------------- |
+| `classes`       | `false`  |          `[]`          |         `["link", "fancy"]`          | List of classes to add to the `a` tag.                       |
+| `srcTransform`  | `false`  | `(url: string) => url` | `(url: string) => url.toLowerCase()` | Function that modifies the `src` attribute on the `img` tag. |
+| `hrefTransform` | `false`  | `(url: string) => url` | `(url: string) => url.toLowerCase()` | Function that modifies the `href` attribute on the `a` tag.  |
 
 If you provide the `classes` option, those classes will be combined into a string and added to the `a` tag. For example, if you provided `{classes: ["link", "fancy"]}` for the options, the result will look like this.
 
