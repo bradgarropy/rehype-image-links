@@ -1,6 +1,6 @@
 {
     "name": "@bradgarropy/rehype-image-links",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "🔗 rehype image links",
     "keywords": [
         "node",
@@ -25,9 +25,9 @@
     "files": [
         "dist"
     ],
-    "main": "dist/index.js",
+    "main": "dist/src/index.js",
     "type": "module",
-    "types": "dist/types/index.d.ts",
+    "types": "dist/types/src/index.d.ts",
     "repository": {
         "type": "git",
         "url": "https://github.com/bradgarropy/rehype-image-links"
